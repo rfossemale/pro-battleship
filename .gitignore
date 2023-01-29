@@ -4,3 +4,4 @@ node_modules
 .env
 public/js/bundle.js
 public/js/bundle.js.LICENSE.txt
+notes.txt

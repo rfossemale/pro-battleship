@@ -10,6 +10,17 @@ class Game {
     this.winner = null;
   }
 
+  get values() {
+    return {
+      id: this.uuid,
+      activePlayer: this.activePlayer,
+      waitingPlayer: this.waitingPlayer,
+      started: this.started,
+      finished: this.finished,
+      winner: this.winner,
+    };
+  }
+
   start() {
     if (!this.started) {
       this.started = true;
@@ -19,18 +30,14 @@ class Game {
   }
 
   end() {
-    clearTimeout(this.timeout);
     this.finished = true;
+    clearTimeout(this.timeout);
     this.activePlayer = null;
     this.waitingPlayer = null;
   }
 
-  getActivePlayer() {
+  get activePlayer() {
     return this.activePlayer;
-  }
-
-  getPlayerById (id) {
-
   }
 
   setWinner(playerId) {
@@ -50,7 +57,7 @@ class Game {
   togglePlayerTurn () {
     this.timeout = setTimeout(() => {
       if (!this.finished) {
-        this.toggleActivePlayer(this.waitingPlayer);
+        this.toggleActivePlayer();
         this.togglePlayerTurn();
       } else {
         clearTimeout(this.timeout);
