@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Example from './components/Example.jsx';
-
+import './scss/index.scss';
 // Main Entry point function
 function App() {
 	return <Example/>;
