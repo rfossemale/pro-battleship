@@ -1,0 +1,19 @@
+.square-container {
+  width: 10%;
+  height: 60px;
+  background-color: grey;
+  padding: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  border: 1px solid;
+  vertical-align: top;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid blue;
+  }
+}

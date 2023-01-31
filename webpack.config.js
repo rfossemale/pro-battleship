@@ -1,11 +1,12 @@
 module.exports = {
-	entry: __dirname+'/src/App.jsx',
-	mode: 'production',
+	entry: __dirname+'/src/index.jsx',
+	mode: 'development',
 	output: {
 		path: __dirname+'/public/js',
 		filename: 'bundle.js'
 	},
 	watch: true,
+	devtool: 'eval-source-map',
 	module: {
 		rules: [
 			{
@@ -21,16 +22,32 @@ module.exports = {
 					}
 				}
 			}, {
-				test: /\.scss$/,
+				test: /\.s[ac]ss$/i,
 				use: [
-					{ loader: 'style-loader' },
+					"style-loader",
 					{
-						loader: 'css-loader',
+						loader: "css-loader",
 						options: {
-							modules: true,
+							sourceMap: true,
 						},
 					},
-					{ loader: 'sass-loader' },
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: true,
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png|jpg|gif)$/i,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: false,
+						},
+					},
 				],
 			},
 		]
